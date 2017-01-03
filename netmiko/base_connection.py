@@ -32,7 +32,8 @@ class BaseConnection(object):
     def __init__(self, ip='', host='', username='', password='', secret='', port=None,
                  device_type='', verbose=False, global_delay_factor=1, use_keys=False,
                  key_file=None, allow_agent=False, ssh_strict=False, system_host_keys=False,
-                 alt_host_keys=False, alt_key_file='', ssh_config_file=None, timeout=8):
+                 alt_host_keys=False, alt_key_file='', ssh_config_file=None, timeout=8,
+                 kex_cipher=None, key_cipher=None):
         """
         Initialize attributes for establishing connection to target device.
 
@@ -109,6 +110,15 @@ class BaseConnection(object):
         self.ansi_escape_codes = False
         self.verbose = verbose
         self.timeout = timeout
+
+        self.key_cipher = key_cipher
+        self.kex_cipher = kex_cipher
+
+        if self.kex_cipher is not None:
+            paramiko.Transport._preferred_kex = (self.kex_cipher,)
+
+        if self.key_cipher is not None:
+            paramiko.Transport._preferred_keys = (self.key_cipher,)
 
         # Use the greater of global_delay_factor or delay_factor local to method
         self.global_delay_factor = global_delay_factor
