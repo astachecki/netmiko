@@ -31,6 +31,7 @@ from netmiko.quanta import QuantaMeshSSH
 from netmiko.aruba import ArubaSSH
 from netmiko.vyos import VyOSSSH
 from netmiko.ubiquiti import UbiquitiEdgeSSH
+from edgecore.edgecore_ssh import EdgeCoreSSH
 
 # The keys of this dictionary are the supported device_types
 CLASS_MAPPER_BASE = {
@@ -70,6 +71,7 @@ CLASS_MAPPER_BASE = {
     'quanta_mesh': QuantaMeshSSH,
     'aruba_os': ArubaSSH,
     'ubiquiti_edge': UbiquitiEdgeSSH,
+    'edgecore': EdgeCoreSSH,
 }
 
 # Also support keys that end in _ssh
