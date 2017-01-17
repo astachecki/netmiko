@@ -42,6 +42,7 @@ setup(
               'netmiko/cisco',
               'netmiko/arista',
               'netmiko/hp',
+              'netmiko/edgecore',
               'netmiko/f5',
               'netmiko/juniper',
               'netmiko/brocade',
