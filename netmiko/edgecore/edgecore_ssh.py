@@ -74,7 +74,8 @@ class EdgeCoreSSH(CiscoSSHConnection):
 
     def send_command(self, command_string, expect_string=None,
                      delay_factor=1, max_loops=500, auto_find_prompt=True,
-                     strip_prompt=True, strip_command=True, page_string=None):
+                     strip_prompt=True, strip_command=True,
+                     page_string='---More---'):
         '''
         Send command to network device retrieve output until router_prompt or
          expect_string
